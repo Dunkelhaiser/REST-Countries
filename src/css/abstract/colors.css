@@ -1,0 +1,13 @@
+:root {
+    --background: hsl(0deg 0% 98%);
+    --foreground: hsl(0deg 0% 100%);
+    --text: hsl(200deg 15% 8%);
+    --shadow: rgba(149 157 165 / 20%);
+}
+
+html[data-theme="dark"] {
+    --background: hsl(207deg 26% 17%);
+    --foreground: hsl(209deg 23% 22%);
+    --text: hsl(0deg 0% 100%);
+    --shadow: rgba(32 37 41 / 20%);
+}
