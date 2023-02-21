@@ -1,0 +1,19 @@
+@import "../../css/abstract/screen-queries.css";
+
+nav {
+    display: flex;
+    justify-content: space-between;
+
+    div:has(input) {
+        width: 37%;
+    }
+
+    @media (--tablet-landscape) {
+        flex-direction: column;
+        gap: 2rem;
+
+        div:has(input) {
+            width: 100%;
+        }
+    }
+}

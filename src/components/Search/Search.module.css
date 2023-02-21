@@ -2,10 +2,16 @@
 
 .search {
     position: relative;
-    margin-bottom: -2rem;
+
+    ::-webkit-search-decoration,
+    ::-webkit-search-cancel-button,
+    ::-webkit-search-results-button,
+    ::-webkit-search-results-decoration {
+        display: none;
+    }
 
     input {
-        width: 37%;
+        width: 100%;
         padding: 1rem 4rem;
 
         font-size: 14px;
@@ -19,6 +25,7 @@
         &::placeholder {
             color: var(--text-light);
         }
+
         @media (--tablet-landscape) {
             width: 100%;
         }
@@ -31,9 +38,5 @@
         transform: translateY(-50%);
 
         color: var(--text-light);
-    }
-
-    @media (--phone) {
-        margin-bottom: 0;
     }
 }

@@ -35,6 +35,8 @@
         "no-nested-ternary": "off",
         "no-plusplus": "off",
         "react-hooks/exhaustive-deps": "off",
-        "react/self-closing-comp": "warn"
+        "react/self-closing-comp": "warn",
+        "jsx-a11y/click-events-have-key-events": "off",
+        "jsx-a11y/no-noninteractive-element-interactions": "off"
     }
 }

@@ -1,11 +1,16 @@
 import Container from "../components/Container/Container";
 import Layout from "../components/Layout/Layout";
+import Navigation from "../components/Navigation/Navigation";
 import Search from "../components/Search/Search";
+import Select from "../components/Select/Select";
 
 function Main() {
     return (
         <Layout>
-            <Search />
+            <Navigation>
+                <Search />
+                <Select options={["Europe", "Asia", "North America", "South America", "Africa", "Australia"]} />
+            </Navigation>
             <Container
                 name="Germany"
                 population="81,770,900"
