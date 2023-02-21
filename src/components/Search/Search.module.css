@@ -1,0 +1,39 @@
+@import "../../css/abstract/screen-queries.css";
+
+.search {
+    position: relative;
+    margin-bottom: -2rem;
+
+    input {
+        width: 37%;
+        padding: 1rem 4rem;
+
+        font-size: 14px;
+        font-weight: 600;
+
+        background-color: var(--foreground);
+        border: none;
+        border-radius: 0.5em;
+        box-shadow: var(--shadow) 0 2px 8px 0;
+
+        &::placeholder {
+            color: var(--text-light);
+        }
+        @media (--tablet-landscape) {
+            width: 100%;
+        }
+    }
+
+    svg {
+        position: absolute;
+        top: 50%;
+        left: 2rem;
+        transform: translateY(-50%);
+
+        color: var(--text-light);
+    }
+
+    @media (--phone) {
+        margin-bottom: 0;
+    }
+}

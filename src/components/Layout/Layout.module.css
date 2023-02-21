@@ -8,6 +8,10 @@
     padding: 2rem 5rem;
 
     background-color: var(--background);
+
+    div:has(input) {
+        grid-column: 1/-1;
+    }
     @media (--phone) {
         gap: 3rem;
         padding: 2rem 3rem;

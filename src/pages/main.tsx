@@ -1,9 +1,11 @@
 import Container from "../components/Container/Container";
 import Layout from "../components/Layout/Layout";
+import Search from "../components/Search/Search";
 
 function Main() {
     return (
         <Layout>
+            <Search />
             <Container
                 name="Germany"
                 population="81,770,900"
