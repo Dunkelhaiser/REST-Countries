@@ -1,4 +1,15 @@
+@import "../../css/abstract/screen-queries.css";
+
 .layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 5rem;
+
     padding: 2rem 5rem;
+
     background-color: var(--background);
+    @media (--phone) {
+        gap: 3rem;
+        padding: 2rem 3rem;
+    }
 }

@@ -12,11 +12,15 @@
         "@fortawesome/free-regular-svg-icons": "^6.3.0",
         "@fortawesome/react-fontawesome": "^0.2.0",
         "react": "^18.2.0",
-        "react-dom": "^18.2.0"
+        "react-dom": "^18.2.0",
+        "react-router": "^6.8.1",
+        "react-router-dom": "^6.8.1"
     },
     "devDependencies": {
         "@types/react": "^18.0.27",
         "@types/react-dom": "^18.0.10",
+        "@types/react-router": "^5.1.20",
+        "@types/react-router-dom": "^5.3.3",
         "@typescript-eslint/eslint-plugin": "^5.49.0",
         "@typescript-eslint/parser": "^5.49.0",
         "@vitejs/plugin-react-swc": "^3.0.0",
@@ -33,6 +37,7 @@
         "eslint-plugin-react-hooks": "^4.6.0",
         "postcss": "^8.4.21",
         "postcss-advanced-variables": "^3.0.1",
+        "postcss-custom-media": "^9.1.2",
         "postcss-extend-rule": "^4.0.0",
         "postcss-import": "^15.1.0",
         "postcss-nested": "^6.0.0",

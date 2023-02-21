@@ -1,3 +1,5 @@
+@import "../../css/abstract/screen-queries.css";
+
 header {
     display: flex;
     flex-direction: row;
@@ -32,6 +34,14 @@ header {
 
         &:active {
             color: var(--text-active);
+        }
+    }
+
+    @media (--phone) {
+        padding: 1.25rem 1rem;
+
+        h1 {
+            font-size: 18px;
         }
     }
 }

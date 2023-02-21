@@ -6,9 +6,9 @@ import postcssPresetEnv from "postcss-preset-env";
 import postcssAdvancedVariables from "postcss-advanced-variables";
 import postcssExtendRule from "postcss-extend-rule";
 import postcssNested from "postcss-nested";
+import postcssCustomMedia from "postcss-custom-media";
 import react from "@vitejs/plugin-react-swc";
 
-// https://vitejs.dev/config/
 export default defineConfig({
     plugins: [react()],
     css: {
@@ -20,6 +20,7 @@ export default defineConfig({
                 postcssPresetEnv({ stage: 1 }),
                 postcssNested(),
                 postcssAdvancedVariables(),
+                postcssCustomMedia(),
                 postcssExtendRule(),
             ],
         },
