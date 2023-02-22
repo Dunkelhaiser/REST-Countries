@@ -1,13 +1,17 @@
 @import "../../css/abstract/screen-queries.css";
 
 .layout {
+    padding: 2rem 5rem;
+    background-color: var(--background);
+    @media (--phone) {
+        padding: 2rem;
+    }
+}
+
+.main {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 5rem;
-
-    padding: 2rem 5rem;
-
-    background-color: var(--background);
 
     nav {
         grid-column: 1/-1;
@@ -19,6 +23,103 @@
     }
     @media (--phone) {
         gap: 3rem;
-        padding: 2rem 3rem;
+    }
+}
+
+.country {
+    display: flex;
+    flex-direction: column;
+    gap: 4.5rem;
+    align-items: flex-start;
+
+    section {
+        display: flex;
+        gap: 7rem;
+        align-items: flex-start;
+        width: 100%;
+
+        article {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+
+            width: 100%;
+            max-width: 550px;
+
+            font-size: 16px;
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            ul {
+                list-style: none;
+
+                li:not(:first-child) {
+                    margin-top: 0.5rem;
+                }
+            }
+
+            div {
+                display: flex;
+                justify-content: space-between;
+                @media (--phone) {
+                    flex-direction: column;
+                    gap: 2rem;
+                }
+            }
+
+            span {
+                font-weight: 600;
+            }
+
+            aside {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                margin-top: 3rem;
+
+                a {
+                    cursor: pointer;
+
+                    padding: 0.15rem 1rem;
+
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: var(--text);
+                    text-decoration: none;
+
+                    background-color: var(--foreground);
+                    border: none;
+                    border-radius: 0.5em;
+                    box-shadow: var(--shadow) 0 2px 8px 0;
+
+                    transition: var(--hover);
+
+                    &:hover,
+                    &:focus {
+                        color: var(--text-hover);
+                    }
+
+                    &:active {
+                        color: var(--text-active);
+                    }
+                }
+                @media (--phone) {
+                    margin-top: 2rem;
+                }
+            }
+        }
+        @media (--tablet-landscape) {
+            flex-direction: column;
+            gap: 2rem;
+
+            img {
+                width: 100%;
+            }
+        }
+    }
+    @media (--phone) {
+        gap: 3rem;
     }
 }

@@ -19,7 +19,8 @@
         background-size: cover;
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
         top: -2px;
     }
 

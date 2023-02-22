@@ -6,7 +6,7 @@ import Select from "../components/Select/Select";
 
 function Main() {
     return (
-        <Layout>
+        <Layout className="main">
             <Navigation>
                 <Search />
                 <Select options={["Europe", "Asia", "North America", "South America", "Africa", "Australia"]} />

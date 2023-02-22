@@ -1,5 +1,6 @@
 import Header from "./components/Header/Header";
 import "./css/styles.css";
+import Country from "./pages/country";
 import Main from "./pages/main";
 
 function App() {
@@ -7,7 +8,8 @@ function App() {
         <>
             <Header />
             <main>
-                <Main />
+                {/* <Main /> */}
+                <Country />
             </main>
         </>
     );

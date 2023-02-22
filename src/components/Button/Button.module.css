@@ -1,0 +1,31 @@
+@import "../../css/abstract/screen-queries.css";
+
+.button {
+    cursor: pointer;
+
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+
+    padding: 0.5rem 2rem;
+
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+
+    background-color: var(--foreground);
+    border: none;
+    border-radius: 0.5em;
+    box-shadow: var(--shadow) 0 2px 8px 0;
+
+    transition: var(--hover);
+
+    &:hover,
+    &:focus {
+        color: var(--text-hover);
+    }
+
+    &:active {
+        color: var(--text-active);
+    }
+}
