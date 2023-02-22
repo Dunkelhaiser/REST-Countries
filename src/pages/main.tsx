@@ -1,72 +1,63 @@
+import { useEffect, useReducer, useState } from "react";
+import { v4 as uuid } from "uuid";
 import Container from "../components/Container/Container";
 import Layout from "../components/Layout/Layout";
 import Navigation from "../components/Navigation/Navigation";
 import Search from "../components/Search/Search";
 import Select from "../components/Select/Select";
+import { countriesReducer, Country, init } from "../reducers/fetchReducer";
 
 function Main() {
+    const [filter, setFilter] = useState("");
+    const [search, setSearch] = useState("");
+    const [state, dispatch] = useReducer(countriesReducer, init);
+
+    useEffect(() => {
+        const setPosts = (posts: Country[]) => {
+            dispatch({ type: "success", payload: posts });
+        };
+        const setError = () => {
+            dispatch({ type: "error" });
+        };
+        const fetchCountries = async (url: string) => {
+            dispatch({ type: "fetch" });
+            try {
+                const response = await fetch(url);
+                const json = await response.json();
+                setPosts(json);
+            } catch (err) {
+                setError();
+            }
+        };
+        fetchCountries("https://restcountries.com/v3.1/all");
+    }, []);
+
+    const countriesList = state.countriesList.sort((a, b) => a.name.common.localeCompare(b.name.common));
+
+    const countries = countriesList.map((country) => (
+        <Container
+            key={uuid()}
+            name={country.name.common}
+            population={country.population.toLocaleString(undefined)}
+            region={country.region}
+            capital={country.capital}
+            flag={country.flags.svg}
+        />
+    ));
+
     return (
         <Layout className="main">
             <Navigation>
-                <Search />
-                <Select options={["Europe", "Asia", "North America", "South America", "Africa", "Australia"]} />
+                <Search onSearch={(searchValue) => setSearch(searchValue)} />
+                <Select options={["Africa", "Americas", "Asia", "Europe", "Oceania"]} onSelect={(region) => setFilter(region)} />
             </Navigation>
-            <Container
-                name="Germany"
-                population="81,770,900"
-                region="Europe"
-                capital="Berlin"
-                flag="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/510px-Flag_of_Germany.svg.png"
-            />
-            <Container
-                name="United States of America"
-                population="81,770,900"
-                region="America"
-                capital="Washington D.C."
-                flag="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/2560px-Flag_of_the_United_States.svg.png"
-            />
-            <Container
-                name="Brazil"
-                population="81,770,900"
-                region="America"
-                capital="Brasilia"
-                flag="https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Flag_of_Brazil.svg/640px-Flag_of_Brazil.svg.png"
-            />
-            <Container
-                name="Iceland"
-                population="81,770,900"
-                region="Europe"
-                capital="Reikjavik"
-                flag="https://www.norden.org/sites/default/files/styles/content_size_800/public/images/Islandsk%2520flag715064.jpeg?itok=JUX-uyyn"
-            />
-            <Container
-                name="Germany"
-                population="81,770,900"
-                region="Europe"
-                capital="Berlin"
-                flag="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/510px-Flag_of_Germany.svg.png"
-            />
-            <Container
-                name="United States of America"
-                population="81,770,900"
-                region="America"
-                capital="Washington D.C."
-                flag="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/2560px-Flag_of_the_United_States.svg.png"
-            />
-            <Container
-                name="Brazil"
-                population="81,770,900"
-                region="America"
-                capital="Brasilia"
-                flag="https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Flag_of_Brazil.svg/640px-Flag_of_Brazil.svg.png"
-            />
-            <Container
-                name="Iceland"
-                population="81,770,900"
-                region="Europe"
-                capital="Reikjavik"
-                flag="https://www.norden.org/sites/default/files/styles/content_size_800/public/images/Islandsk%2520flag715064.jpeg?itok=JUX-uyyn"
-            />
+            {filter === "" || filter === "Filter by Region"
+                ? search === ""
+                    ? countries
+                    : countries.filter((country) => country.props.name.toLowerCase().includes(search.toLowerCase()))
+                : countries
+                      .filter((country) => country.props.region === filter)
+                      .filter((country) => country.props.name.toLowerCase().includes(search.toLowerCase()))}
         </Layout>
     );
 }

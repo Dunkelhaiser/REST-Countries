@@ -11,7 +11,7 @@ interface Props {
 
 const Container: React.FC<Props> = ({ flag, name, population, region, capital }) => {
     return (
-        <Link to="/post" className={ContainerStyles.container}>
+        <Link to={`/${name}`} className={ContainerStyles.container}>
             <div
                 className={ContainerStyles.thumb}
                 style={{
@@ -28,7 +28,7 @@ const Container: React.FC<Props> = ({ flag, name, population, region, capital })
                         <span>Region:</span> {region}
                     </li>
                     <li>
-                        <span>Capital:</span> {capital}
+                        {capital && <span>Capital:</span>} {capital}
                     </li>
                 </ul>
             </article>

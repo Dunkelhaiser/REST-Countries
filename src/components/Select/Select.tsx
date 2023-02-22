@@ -6,9 +6,10 @@ import SelectStyles from "./Select.module.css";
 
 interface Props {
     options: string[];
+    onSelect: (option: string) => void;
 }
 
-const Select: React.FC<Props> = ({ options }) => {
+const Select: React.FC<Props> = ({ options, onSelect }) => {
     const [opened, setOpened] = useState(false);
     const [selected, setSelected] = useState("");
     const selectRef = useRef(null);
@@ -19,6 +20,7 @@ const Select: React.FC<Props> = ({ options }) => {
                 e.preventDefault();
                 setOpened(false);
                 setSelected("");
+                onSelect("");
             }
         };
 
@@ -35,6 +37,7 @@ const Select: React.FC<Props> = ({ options }) => {
                 if (ref.current && !ref.current.contains(e.target as HTMLDivElement)) {
                     setOpened(false);
                     setSelected("");
+                    onSelect("");
                 }
             };
             document.addEventListener("mousedown", handleClickOutside);
@@ -60,6 +63,7 @@ const Select: React.FC<Props> = ({ options }) => {
                                 key={uuid()}
                                 onClick={() => {
                                     setSelected(option);
+                                    onSelect(option);
                                     setOpened(false);
                                 }}
                             >
