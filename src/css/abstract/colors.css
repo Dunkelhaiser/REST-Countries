@@ -12,7 +12,8 @@ html[data-theme="dark"] {
     --background: hsl(207deg 26% 17%);
     --foreground: hsl(209deg 23% 22%);
     --text: hsl(0deg 0% 100%);
-    --text-hover: hsl(0deg 0% 75%);
-    --text-active: hsl(0deg 0% 50%);
+    --text-hover: hsl(0deg 0% 85%);
+    --text-active: hsl(0deg 0% 75%);
+    --text-light: hsl(0deg 0% 100%);
     --shadow: rgba(32 37 41 / 20%);
 }

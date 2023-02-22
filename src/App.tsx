@@ -8,8 +8,8 @@ function App() {
         <>
             <Header />
             <main>
-                {/* <Main /> */}
-                <Country />
+                <Main />
+                {/* <Country /> */}
             </main>
         </>
     );

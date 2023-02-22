@@ -23,6 +23,7 @@ header {
         align-items: center;
 
         font-weight: 800;
+        color: var(--text);
 
         background-color: transparent;
         border: none;

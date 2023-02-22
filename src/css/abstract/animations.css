@@ -1,3 +1,4 @@
 :root {
-    --hover: all 0.1s ease-in;
+    --hover: all 0.3s;
+    --theme: background-color 0.3s;
 }
