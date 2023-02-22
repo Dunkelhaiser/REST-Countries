@@ -2,6 +2,7 @@ import { useEffect, useReducer, useState } from "react";
 import { v4 as uuid } from "uuid";
 import Container from "../components/Container/Container";
 import Layout from "../components/Layout/Layout";
+import Loader from "../components/Loader/Loader";
 import Navigation from "../components/Navigation/Navigation";
 import Search from "../components/Search/Search";
 import Select from "../components/Select/Select";
@@ -24,6 +25,9 @@ function Main() {
             try {
                 const response = await fetch(url);
                 const json = await response.json();
+                if (!response.ok) {
+                    throw new Error();
+                }
                 setPosts(json);
             } catch (err) {
                 setError();
@@ -32,18 +36,20 @@ function Main() {
         fetchCountries("https://restcountries.com/v3.1/all");
     }, []);
 
-    const countriesList = state.countriesList.sort((a, b) => a.name.common.localeCompare(b.name.common));
+    const { countriesList, error, loading } = state;
 
-    const countries = countriesList.map((country) => (
-        <Container
-            key={uuid()}
-            name={country.name.common}
-            population={country.population.toLocaleString(undefined)}
-            region={country.region}
-            capital={country.capital}
-            flag={country.flags.svg}
-        />
-    ));
+    const countries = countriesList
+        ?.sort((a, b) => a.name.common.localeCompare(b.name.common))
+        ?.map((country) => (
+            <Container
+                key={uuid()}
+                name={country.name.common}
+                population={country.population.toLocaleString(undefined)}
+                region={country.region}
+                capital={country.capital}
+                flag={country.flags.svg}
+            />
+        ));
 
     return (
         <Layout className="main">
@@ -51,6 +57,8 @@ function Main() {
                 <Search onSearch={(searchValue) => setSearch(searchValue)} />
                 <Select options={["Africa", "Americas", "Asia", "Europe", "Oceania"]} onSelect={(region) => setFilter(region)} />
             </Navigation>
+            {error && <h2>Error</h2>}
+            {loading && <Loader />}
             {filter === "" || filter === "Filter by Region"
                 ? search === ""
                     ? countries
