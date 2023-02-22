@@ -1,12 +1,14 @@
 export interface Country {
-    name: { common: string; official: string; nativeName: string };
+    borders: string[];
+    name: { common: string; official: string };
+    nativeName: string;
     population: number;
     region: string;
-    subRegion: string;
+    subregion: string;
     capital: string;
     topLevelDomain: string;
-    currency: string;
-    languages: string[];
+    currencies: { name: string }[];
+    languages: { name: string }[];
     flags: { png: string; svg: string };
 }
 
@@ -45,31 +47,31 @@ export const countriesReducer = (state: typeof init, action: ReducerActions) => 
 
 export const initCountry = {
     loading: false,
-    post: null as null | Country,
+    country: null as null | Country,
     error: false,
 };
 
-type ReducerPostActions = { type: "fetch" } | { type: "success"; payload: Country } | { type: "error" };
+type ReducerCountryActions = { type: "fetch" } | { type: "success"; payload: Country } | { type: "error" };
 
-export const countryReducer = (state: typeof initCountry, action: ReducerPostActions) => {
+export const countryReducer = (state: typeof initCountry, action: ReducerCountryActions) => {
     switch (action.type) {
         case "fetch":
             return {
                 loading: true,
                 error: false,
-                post: null,
+                country: null,
             };
         case "success":
             return {
                 loading: false,
                 error: false,
-                post: action.payload,
+                country: action.payload,
             };
         case "error":
             return {
                 loading: false,
                 error: true,
-                post: null,
+                country: null,
             };
         default:
             return state;
