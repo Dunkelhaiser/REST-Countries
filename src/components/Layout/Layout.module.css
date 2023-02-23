@@ -83,7 +83,7 @@
                 }
             }
 
-            span {
+            span:first-child {
                 font-weight: 600;
             }
 

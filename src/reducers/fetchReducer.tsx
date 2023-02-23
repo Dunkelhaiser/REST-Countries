@@ -1,6 +1,6 @@
 export interface Country {
     borders: string[];
-    name: { common: string; official: string };
+    name: string;
     nativeName: string;
     population: number;
     region: string;
