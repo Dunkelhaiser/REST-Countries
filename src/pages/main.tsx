@@ -39,11 +39,11 @@ function Main() {
     const { countriesList, error, loading } = state;
 
     const countries = countriesList
-        ?.sort((a, b) => a.name.common.localeCompare(b.name.common))
+        ?.sort((a, b) => a.name.localeCompare(b.name))
         ?.map((country) => (
             <Container
                 key={uuid()}
-                name={country.name.common}
+                name={country.name}
                 population={country.population.toLocaleString(undefined)}
                 region={country.region}
                 capital={country.capital}
