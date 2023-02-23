@@ -33,7 +33,7 @@ function Main() {
                 setError();
             }
         };
-        fetchCountries("https://restcountries.com/v3.1/all");
+        fetchCountries("https://restcountries.com/v2/all");
     }, []);
 
     const { countriesList, error, loading } = state;
